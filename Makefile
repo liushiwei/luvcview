@@ -9,10 +9,11 @@ CPP=g++
 INSTALL=install
 APP_BINARY=luvcview
 BIN=/usr/local/bin
-SDLLIBS = $(shell sdl2-config --libs) 
-SDLFLAGS = $(shell sdl2-config --cflags)
+MATH_LIB = -lm
+SDLLIBS = $(shell sdl-config --libs) 
+SDLFLAGS = $(shell sdl-config --cflags)
 #LIBX11FLAGS= -I/usr/X11R6/include -L/usr/X11R6/lib
-VERSION = 0.2.1
+VERSION = 0.2.6
 
 #WARNINGS = -Wall \
 #           -Wundef -Wpointer-arith -Wbad-function-cast \
@@ -22,7 +23,7 @@ VERSION = 0.2.1
 #           -Wno-unused
 #           -Wunused
 
-CFLAGS += -DUSE_SDL -O2 -DLINUX -DVERSION=\"$(VERSION)\" $(SDLFLAGS) $(WARNINGS)
+CFLAGS += -DUSE_SDL -O2 -DLINUX -DVERSION=\"$(VERSION)\" -I$(SDLFLAGS) $(WARNINGS)
 CPPFLAGS = $(CFLAGS)
 
 OBJECTS= luvcview.o color.o utils.o v4l2uvc.o gui.o avilib.o
